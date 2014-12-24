@@ -1,0 +1,61 @@
+﻿buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE")
+		classpath("org.springframework:springloaded:1.2.0.RELEASE")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'domaboot'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+idea {
+	module {
+		inheritOutputDirs = false
+		outputDir = file("$buildDir/classes/main/")
+	}
+}
+
+// [compileJava,compileTestJava]*.options*.encoding='UTF-8'
+
+// DomaのSQLファイルをコンパイルより前に出力先Dirにコピーするための設定
+// processResources.destinationDir = compileJava.destinationDir
+// compileJava.dependsOn processResorces
+
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+
+    // TODO:本当はprovided相当にすべきだができてない
+    compile("org.project.lombok:1.14.8")
+    
+    // DBアクセス関連
+    compile("org.springframework:spring-jdbc")
+    compile("org.seasar.doma:doma:2.0.1")
+    
+    // H2database
+    compile("com.h2database:h2")
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
+}
