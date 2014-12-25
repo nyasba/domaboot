@@ -1,4 +1,4 @@
-﻿buildscript {
+buildscript {
     repositories {
         mavenCentral()
     }
@@ -28,11 +28,11 @@ idea {
 	}
 }
 
-// [compileJava,compileTestJava]*.options*.encoding='UTF-8'
+[compileJava,compileTestJava]*.options*.encoding='UTF-8'
 
-// DomaのSQLファイルをコンパイルより前に出力先Dirにコピーするための設定
-// processResources.destinationDir = compileJava.destinationDir
-// compileJava.dependsOn processResorces
+/* DomaのSQLファイルをコンパイルより前に出力先Dirにコピーするための設定 */
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
 
 
 dependencies {
@@ -43,15 +43,18 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 
-    // TODO:本当はprovided相当にすべきだができてない
-    compile("org.project.lombok:1.14.8")
+    /* TODO:本当はprovided相当にすべきだができてない */
+    compile("org.projectlombok:lombok:1.14.8")
     
-    // DBアクセス関連
+    /* DBアクセス関連 */
     compile("org.springframework:spring-jdbc")
     compile("org.seasar.doma:doma:2.0.1")
     
-    // H2database
+    /* H2database */
     compile("com.h2database:h2")
+
+    /* ログの設定 */
+    compile("org.lazyluke:log4jdbc-remix:0.2.7")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
