@@ -1,2 +1,2 @@
-insert into customers(first_name, last_name) values('Nobita', 'Nobi');
-insert into customers(first_name, last_name) values('Emon', 'Dora');
+insert into customers(id, first_name, last_name) values(seq_customers.NEXTVAL, 'Nobita', 'Nobi');
+insert into customers(id, first_name, last_name) values(seq_customers.NEXTVAL, 'Emon', 'Dora');
