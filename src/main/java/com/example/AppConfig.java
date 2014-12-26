@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -59,7 +60,15 @@ public class AppConfig {
 
     @Bean
     DataSource dataSource(){
-        return new Log4jdbcProxyDataSource(this.realDataSource());
+        /*
+            TransactionAwareDataSourceProxyでラップしないとDomaのコネクションが
+            Springの管理外になって実行時例外発生時にRollbackされない
+          */
+        return new TransactionAwareDataSourceProxy(
+                    new Log4jdbcProxyDataSource(
+                            this.realDataSource()
+                    )
+        );
     }
 
     @Bean

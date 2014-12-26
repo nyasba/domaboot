@@ -2,7 +2,6 @@ package com.example.service;
 
 import com.example.datasource.CustomerRepository;
 import com.example.domain.CustomerEntity;
-import org.seasar.doma.jdbc.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,8 +40,7 @@ public class CustomerService {
      * @param customerEntity 顧客情報
      */
     public void register(CustomerEntity customerEntity){
-        Result<CustomerEntity> result = customerRepository.insert(customerEntity);
-        System.out.println(result.toString());
+        customerRepository.insert(customerEntity);
     }
 
     /**
