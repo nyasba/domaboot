@@ -11,6 +11,9 @@ import java.util.List;
 public interface CustomerRepository {
 
     @Select
+    public List<CustomerEntity> findAllOrderById();
+
+    @Select
     public List<CustomerEntity> findAllOrderByName();
 
     @Select

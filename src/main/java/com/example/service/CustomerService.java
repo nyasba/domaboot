@@ -19,10 +19,18 @@ public class CustomerService {
     CustomerRepository customerRepository;
 
     /**
-     * 顧客全件取得する
+     * ID順に顧客全件取得する
      * @return 顧客リスト
      */
     public List<CustomerEntity> findAll(){
+        return customerRepository.findAllOrderById();
+    }
+
+    /**
+     * 名前順に顧客全件取得する
+     * @return 顧客リスト
+     */
+    public List<CustomerEntity> findAllOrderByName(){
         return customerRepository.findAllOrderByName();
     }
 
