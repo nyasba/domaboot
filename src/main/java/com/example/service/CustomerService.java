@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.datasource.CustomerRepository;
 import com.example.domain.CustomerEntity;
+import org.seasar.doma.jdbc.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +25,14 @@ public class CustomerService {
      */
     public List<CustomerEntity> findAll(){
         return customerRepository.findAllOrderById();
+    }
+
+    /**
+     * ID順に顧客全件取得する。ページング処理付
+     * @return 顧客リスト
+     */
+    public List<CustomerEntity> findAllWithPaging(SelectOptions selectOptions){
+        return customerRepository.findAllOrderById(selectOptions);
     }
 
     /**

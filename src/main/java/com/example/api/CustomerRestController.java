@@ -1,7 +1,9 @@
 package com.example.api;
 
 import com.example.domain.CustomerEntity;
+import com.example.lib.domain.Paging;
 import com.example.service.CustomerService;
+import org.seasar.doma.jdbc.SelectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +21,14 @@ public class CustomerRestController {
     CustomerService customerService;
 
     @RequestMapping(value = "/api/customers", method = RequestMethod.GET)
-    List<CustomerEntity> getCustomers() {
-        return customerService.findAll();
+    List<CustomerEntity> getCustomers(
+            /* SpringMVC4.1(SpringBoot1.2)以降はOptionalでrequire=falseになる */
+            @RequestParam(required = false) Integer pageNumber,
+            @RequestParam(required = false) Integer numberOfRecord
+    ) {
+        Paging paging = new Paging(pageNumber, numberOfRecord);
+        SelectOptions selectOptions = paging.getSelectOption();
+        return        customerService.findAllWithPaging(selectOptions);
     }
 
     @RequestMapping(value = "/api/customers/{id}", method = RequestMethod.GET)

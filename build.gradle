@@ -8,7 +8,7 @@ buildscript {
 	}
 }
 
-apply plugin: 'java'
+apply plugin: 'groovy'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
@@ -57,6 +57,19 @@ dependencies {
     compile("org.lazyluke:log4jdbc-remix:0.2.7")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
+
+    /* Rest APIのテスト用 */
+    testCompile("com.jayway.restassured:rest-assured:2.3.3")
+
+    /* SpockFramework(GroovyのBDDテストフレームワーク) */
+    testCompile("org.spockframework:spock-core:0.7-groovy-2.0")
+
+    /* Geb(ブラウザテスト用フレームワーク) */
+    testCompile "org.gebish:geb-spock:0.10.0"
+
+    /* Webドライバ */
+    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:2.44.0"
+
 }
 
 task wrapper(type: Wrapper) {

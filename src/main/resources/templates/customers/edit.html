@@ -19,9 +19,9 @@
                 <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error-messages">error!</span>
             </dd>
         </dl>
-        <input type="submit" name="goToTop" value="戻る"/>
+        <input type="submit" name="goToTop" id="goToTop" value="戻る"/>
         <input type="hidden" name="id" th:value="${param.id[0]}"/>
-        <input type="submit" value="更新"/>
+        <input type="submit" id="submit" value="更新"/>
     </form>
 </body>
 </html>

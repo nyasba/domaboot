@@ -3,6 +3,7 @@ package com.example.datasource;
 import com.example.domain.CustomerEntity;
 import org.seasar.doma.*;
 import org.seasar.doma.jdbc.Result;
+import org.seasar.doma.jdbc.SelectOptions;
 
 import java.util.List;
 
@@ -12,6 +13,9 @@ public interface CustomerRepository {
 
     @Select
     public List<CustomerEntity> findAllOrderById();
+
+    @Select
+    public List<CustomerEntity> findAllOrderById(SelectOptions selectOptions);
 
     @Select
     public List<CustomerEntity> findAllOrderByName();
@@ -27,4 +31,8 @@ public interface CustomerRepository {
 
     @Delete
     public Result<CustomerEntity> delete(CustomerEntity customerEntity);
+
+    @Delete(sqlFile = true)
+    public int deleteAll();
+
 }
