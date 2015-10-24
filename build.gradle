@@ -3,8 +3,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE")
-		classpath("org.springframework:springloaded:1.2.0.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
+		classpath("org.springframework:springloaded:1.2.4.RELEASE")
 	}
 }
 
@@ -54,7 +54,9 @@ dependencies {
     compile("com.h2database:h2")
 
     /* ログの設定 */
-    compile("org.lazyluke:log4jdbc-remix:0.2.7")
+    compile("org.lazyluke:log4jdbc-remix:0.2.7") {
+        exclude module: 'junit'
+    }
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 
@@ -68,7 +70,7 @@ dependencies {
     testCompile "org.gebish:geb-spock:0.10.0"
 
     /* Webドライバ */
-    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:2.44.0"
+    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:2.48.2"
 
 }
 
