@@ -48,7 +48,7 @@ dependencies {
     
     /* DBアクセス関連 */
     compile("org.springframework:spring-jdbc")
-    compile("org.seasar.doma:doma:2.0.1")
+    compile("org.seasar.doma:doma:2.5.0")
     
     /* H2database */
     compile("com.h2database:h2")
