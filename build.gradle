@@ -69,6 +69,9 @@ dependencies {
     /* Geb(ブラウザテスト用フレームワーク) */
     testCompile "org.gebish:geb-spock:0.10.0"
 
+    /* Selenide(Java製Seleniumラッパー) */
+    testCompile 'com.codeborne:selenide:2.23'
+
     /* Webドライバ */
     testCompile "org.seleniumhq.selenium:selenium-chrome-driver:2.48.2"
 
