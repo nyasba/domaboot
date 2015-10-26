@@ -4,7 +4,7 @@ import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
 /**
- * Created by ny on 2015/10/25.
+ * メインページ
  */
 public class MainPage {
 
@@ -12,6 +12,10 @@ public class MainPage {
 
     public static void open(){
         Selenide.open(URL);
+    }
+
+    public static String title(){
+        return Selenide.title();
     }
 
     public static int 登録件数(){
@@ -33,4 +37,13 @@ public class MainPage {
         return Selenide.$(By.id("lastName" + String.valueOf(index))).getText()
                 +  Selenide.$(By.id("firstName" + String.valueOf(index))).getText();
     }
+
+    public static void 編集ボタンを押す(int index){
+        Selenide.$(By.id("edit" + String.valueOf(index))).click();
+    }
+
+    public static void 削除ボタンを押す(int index){
+        Selenide.$(By.id("delete" + String.valueOf(index))).click();
+    }
+
 }
