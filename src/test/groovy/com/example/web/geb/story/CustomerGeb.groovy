@@ -1,8 +1,8 @@
-package com.example.web.story
+package com.example.web.geb.story
 
 import com.example.App
-import com.example.web.page.EditPage
-import com.example.web.page.MainPage
+import com.example.web.geb.page.EditPage
+import com.example.web.geb.page.MainPage
 import geb.spock.GebSpec
 import spock.lang.Stepwise
 import spock.lang.Unroll
@@ -92,7 +92,7 @@ class CustomerGeb extends GebSpec {
 
         setup:
             to MainPage
-            at MainPage
+            MainPage
 
         when:
             assert 登録件数 == 2

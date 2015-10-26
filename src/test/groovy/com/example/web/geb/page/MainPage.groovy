@@ -1,4 +1,4 @@
-package com.example.web.page
+package com.example.web.geb.page
 
 import geb.Page
 
